@@ -4,7 +4,7 @@ An Ansible Role for Linux that installs a script which synchronizes SSL certific
 
 ## Requirements
 
-A Certkit account ([Signup for a free](https://app.certkit.io/signup)).
+A Certkit account ([Signup for free](https://app.certkit.io/signup)).
 
 ## Installing the Role
 
