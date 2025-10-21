@@ -1,0 +1,40 @@
+---
+galaxy_info:
+  role_name: sync
+  namespace: certkit
+  author: "Certkit.io"
+  description: Certkit SSL Certificate Syncing for Linux.
+  company: "TrackJS, LLC"
+  license: "license (MIT)"
+  min_ansible_version: 2.9.0
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Alpine
+      version:
+        - all
+    - name: ArchLinux
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+  galaxy_tags:
+    - https
+    - ssl
+    - certificates
+    - letsencrypt
+    - web
+    - server
+    - networking
+dependencies: []
