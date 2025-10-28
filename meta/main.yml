@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: sync
-  namespace: certkit
+  namespace: certkit_io
   author: "Certkit.io"
   description: Certkit SSL Certificate Syncing for Linux.
   company: "TrackJS, LLC"

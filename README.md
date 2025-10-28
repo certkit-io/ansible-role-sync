@@ -1,4 +1,4 @@
-# Ansible Role: Certkit.Sync
+# Ansible Role: certkit_io.sync
 
 An Ansible Role for Linux that installs a script which synchronizes SSL certificates managed by [Certkit.io](https://www.certkit.io/).
 
@@ -11,7 +11,7 @@ A Certkit account ([Signup for free](https://app.certkit.io/signup)).
 Install using the `ansible-galaxy` CLI:
 
 ```
-ansible-galaxy role install certkit.sync
+ansible-galaxy role install certkit_io.sync
 ```
 
 ## Role Variables
@@ -38,7 +38,7 @@ None.
   tasks:
 
     - include_role:
-        name: certkit.sync
+        name: certkit_io.sync
       vars:
         # Credentials from the CertKit UI
         certkit_bucket: certkit-1234
