@@ -2,6 +2,18 @@
 
 An Ansible Role for Linux that installs a script which synchronizes SSL certificates managed by [Certkit.io](https://www.certkit.io/).
 
+## Overview
+
+* Installs a simple syncronization script to whichever directory you specify.
+* Builds a configuration file from variables you give it.
+* Once installed, the script:
+  * Syncs the latest certificate from CertKit into a local directory using [minio-client](https://docs.min.io/community/minio-object-store/reference/minio-mc.html#quickstart).
+  * Copies the certificate into place if it is changed or missing.
+  * Optionally runs a post-update command (e.g. `nginx -s reload`).
+  * Logs all activity to `certkit.log` (keeping last 2000 log lines)
+  * Is periodically run on a Cron schedule.
+* To sync multiple certificates, call the role multiple times. See the [Syncing Multiple Certificates](#syncing-multiple-certificates) section.
+
 ## Requirements
 
 A Certkit account ([Signup for free](https://app.certkit.io/signup)).
@@ -64,10 +76,11 @@ None.
 ## Syncing Multiple Certificates
 
 Sync more than one certificate by simply calling the role again. These variables will differ between each certificate:
-    - `certkit_certificate_id`
-    - `certkit_dir`
-    - `certkit_pem_destination`
-    - `certkit_key_destination`
+
+- `certkit_certificate_id`
+- `certkit_dir`
+- `certkit_pem_destination`
+- `certkit_key_destination`
 
 ## License
 
