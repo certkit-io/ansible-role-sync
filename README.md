@@ -1,10 +1,10 @@
 # Ansible Role: certkit_io.sync
 
-An Ansible Role for Linux that installs a script which synchronizes SSL certificates managed by [Certkit.io](https://www.certkit.io/).
+An Ansible Role for Linux that installs a script which synchronizes SSL certificates managed by [Certkit.io](https://www.certkit.io/). It is published on Ansible Galaxy [here](https://galaxy.ansible.com/ui/standalone/roles/certkit_io/sync/install/).
 
 ## Overview
 
-* Installs a simple syncronization script to whichever directory you specify.
+* Installs a simple synchronization script to whichever directory you specify.
 * Builds a configuration file from variables you give it.
 * Once installed, the script:
   * Syncs the latest certificate from CertKit into a local directory using [minio-client](https://docs.min.io/community/minio-object-store/reference/minio-mc.html#quickstart).
