@@ -21,7 +21,7 @@ All variables are listed below. They are all required, unless otherwise specifie
 - `certkit_bucket`: The name of your certkit storage bucket. Get this from the Certkit UI.
 - `certkit_access_key`: The access key for your certkit storage bucket. Get this from the Certkit UI.
 - `certkit_secret_key`: The secret key for your certkit storage bucket. Get this from the Certkit UI.
-- `certkit_common_name`: The domain name of the certificate. Prefix with * if it's a wildcard.
+- `certkit_certificate_id`: The ID of the certificate to sync.  Get this from the Certkit UI.
 - `certkit_dir`: The directory where the certkit sync script and config file will be placed. Arbitrary, pick what you'd like. Should be unique if multiple certkit scripts are installed on the same box!
 - `certkit_update_cmd`: Certkit sync runs this command whenever the certificates are updated. Use to inform the server of a new certificate.
 - `certkit_pem_destination`: File path where Certkit sync will write the certificate PEM file. This is wherever your server software expects the certificate to live.
@@ -45,8 +45,8 @@ None.
         certkit_access_key: YOUR_ACCESS_KEY
         certkit_secret_key: YOUR_SECRET_KEY
 
-        # This is the common name/domain of the certificate.  If it's wildcard, prefix with *.
-        certkit_common_name: "*.yourdomain.com"
+        # The ID of the certificate to sync.  Get this from the Certkit UI.
+        certkit_certificate_id: ab12
 
         # The directory where the certkit sync script and config file will be placed. Arbitrary, pick what you'd like.
         # When syncing multiple certificates, each configuration should use a different directory.
@@ -64,7 +64,7 @@ None.
 ## Syncing Multiple Certificates
 
 Sync more than one certificate by simply calling the role again. These variables will differ between each certificate:
-    - `certkit_common_name`
+    - `certkit_certificate_id`
     - `certkit_dir`
     - `certkit_pem_destination`
     - `certkit_key_destination`
