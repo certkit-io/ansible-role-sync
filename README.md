@@ -1,6 +1,18 @@
 # Ansible Role: certkit_io.sync
 
-An Ansible Role for Linux that installs a script which synchronizes SSL certificates managed by [Certkit.io](https://www.certkit.io/).
+An Ansible Role for Linux that installs a script which synchronizes SSL certificates managed by [Certkit.io](https://www.certkit.io/). It is published on Ansible Galaxy [here](https://galaxy.ansible.com/ui/standalone/roles/certkit_io/sync/install/).
+
+## Overview
+
+* Installs a simple synchronization script to whichever directory you specify.
+* Builds a configuration file from variables you give it.
+* Once installed, the script:
+  * Syncs the latest certificate from CertKit into a local directory using [minio-client](https://docs.min.io/community/minio-object-store/reference/minio-mc.html#quickstart).
+  * Copies the certificate into place if it is changed or missing.
+  * Optionally runs a post-update command (e.g. `nginx -s reload`).
+  * Logs all activity to `certkit.log` (keeping last 2000 log lines)
+  * Is periodically run on a Cron schedule.
+* To sync multiple certificates, call the role multiple times. See the [Syncing Multiple Certificates](#syncing-multiple-certificates) section.
 
 ## Requirements
 
@@ -21,7 +33,7 @@ All variables are listed below. They are all required, unless otherwise specifie
 - `certkit_bucket`: The name of your certkit storage bucket. Get this from the Certkit UI.
 - `certkit_access_key`: The access key for your certkit storage bucket. Get this from the Certkit UI.
 - `certkit_secret_key`: The secret key for your certkit storage bucket. Get this from the Certkit UI.
-- `certkit_common_name`: The domain name of the certificate. Prefix with * if it's a wildcard.
+- `certkit_certificate_id`: The ID of the certificate to sync.  Get this from the Certkit UI.
 - `certkit_dir`: The directory where the certkit sync script and config file will be placed. Arbitrary, pick what you'd like. Should be unique if multiple certkit scripts are installed on the same box!
 - `certkit_update_cmd`: Certkit sync runs this command whenever the certificates are updated. Use to inform the server of a new certificate.
 - `certkit_pem_destination`: File path where Certkit sync will write the certificate PEM file. This is wherever your server software expects the certificate to live.
@@ -45,8 +57,8 @@ None.
         certkit_access_key: YOUR_ACCESS_KEY
         certkit_secret_key: YOUR_SECRET_KEY
 
-        # This is the common name/domain of the certificate.  If it's wildcard, prefix with *.
-        certkit_common_name: "*.yourdomain.com"
+        # The ID of the certificate to sync.  Get this from the Certkit UI.
+        certkit_certificate_id: ab12
 
         # The directory where the certkit sync script and config file will be placed. Arbitrary, pick what you'd like.
         # When syncing multiple certificates, each configuration should use a different directory.
@@ -64,10 +76,11 @@ None.
 ## Syncing Multiple Certificates
 
 Sync more than one certificate by simply calling the role again. These variables will differ between each certificate:
-    - `certkit_common_name`
-    - `certkit_dir`
-    - `certkit_pem_destination`
-    - `certkit_key_destination`
+
+- `certkit_certificate_id`
+- `certkit_dir`
+- `certkit_pem_destination`
+- `certkit_key_destination`
 
 ## License
 
