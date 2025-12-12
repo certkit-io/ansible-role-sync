@@ -30,6 +30,19 @@
 #     include_role: name=certkit_io.sync
 
 
+- name: Check For Required Variables
+  fail: msg="Variable '{{ item }}' was not defined, but is required by certkit sync"
+  when: vars[item] is not defined
+  with_items:
+    - certkit_bucket
+    - certkit_access_key
+    - certkit_secret_key
+    - certkit_certificate_id
+    - certkit_dir
+    - certkit_update_cmd
+    - certkit_pem_destination
+    - certkit_key_destination
+
 - name: Make Certkit Directory
   file: 
     path: "{{certkit_dir}}"
