@@ -27,7 +27,7 @@
 #       certkit_update_cmd: "/usr/sbin/nginx -s reload"  
 #       certkit_pem_destination: "/etc/nginx/yourdomain.pem"
 #       certkit_key_destination: "/etc/nginx/yourdomain.key"
-#     include_role: name=certkit
+#     include_role: name=certkit_io.sync
 
 
 - name: Make Certkit Directory
