@@ -2,6 +2,13 @@
 
 An Ansible Role for Linux that installs a script which synchronizes SSL certificates managed by [Certkit.io](https://www.certkit.io/). It is published on Ansible Galaxy [here](https://galaxy.ansible.com/ui/standalone/roles/certkit_io/sync/install/).
 
+## NOTE: New Certkit Agent Role
+
+We recommend you use our new agent based role [certkit_io.agent](https://github.com/certkit-io/ansible-role-agent) to manage Certkit certificates. 
+The Certkit agent allows easy management of multiple certificates and has closer integration with the Certkit application.
+
+However, if certkit_io.sync is serving your needs, then there is no problem with you continuing to use it.
+
 ## Overview
 
 * Installs a simple synchronization script to whichever directory you specify.
